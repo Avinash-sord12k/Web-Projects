@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prespective-selection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-height: 100vh;
+            background-color: hsl(0, 0%, 1%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        section {
+            width: 80%;
+            height: 80%;
+            background: linear-gradient(to right, black, rgba(0, 0, 0, 0.197), rgba(255, 255, 255, 0));
+
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            color: white;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .text h1 {
+            font-size: 4em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 900;
+            text-transform: capitalize;
+        }
+        .text h1 red {
+            color: rgb(244, 68, 156);
+        }
+        .text p {
+            margin-top: 2em;
+            font-size: 1em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: capitalize;
+        }
+
+        .selection-nav {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 52%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            grid-auto-rows: 120px;
+            transform: perspective(5em) rotateY(-3deg);
+            z-index: 0;
+        }
+        .selection-nav > div {
+            background-color: rgb(64, 64, 64);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 1em;
+            text-transform: capitalize;
+            transition: transform 200ms;
+            overflow: hidden;
+        }
+        /* .selection-nav :nth-child(1) {
+            background-color: green;
+            grid-column: 1 / span 2 ;
+        } */
+
+        .selection-nav > div:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 10px 0 white;
+        } 
+
+        .selection-nav > div img {
+            width: 100%;
+            height: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <section>
+        <div class="text">
+            <h1>Lorem <red>ipsum</red> dolor sit amet elit.</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ipsam obcaecati soluta odit nobis corrupti
+                officiis magni aut quisquam aperiam?</p>
+        </div>
+        <div class="selection-nav">
+            <div class="items"><img src="https://t4.ftcdn.net/jpg/01/80/82/81/360_F_180828113_IjFSdGOB7RhVQBkc5aoBlPfDtqKgJl7R.jpg" alt="" srcset=""></div>
+            <div class="items"><img src="https://t4.ftcdn.net/jpg/01/80/82/81/360_F_180828113_IjFSdGOB7RhVQBkc5aoBlPfDtqKgJl7R.jpg" alt="" srcset=""></div>
+            <div class="items"><img src="https://t4.ftcdn.net/jpg/01/80/82/81/360_F_180828113_IjFSdGOB7RhVQBkc5aoBlPfDtqKgJl7R.jpg" alt="" srcset=""></div>
+            <div class="items"><img src="https://t4.ftcdn.net/jpg/01/80/82/81/360_F_180828113_IjFSdGOB7RhVQBkc5aoBlPfDtqKgJl7R.jpg" alt="" srcset=""></div>
+            <div class="items"><img src="https://t4.ftcdn.net/jpg/01/80/82/81/360_F_180828113_IjFSdGOB7RhVQBkc5aoBlPfDtqKgJl7R.jpg" alt="" srcset=""></div>
+            <div class="items"><img src="https://t4.ftcdn.net/jpg/01/80/82/81/360_F_180828113_IjFSdGOB7RhVQBkc5aoBlPfDtqKgJl7R.jpg" alt="" srcset=""></div>
+            <div class="items"><img src="https://t4.ftcdn.net/jpg/01/80/82/81/360_F_180828113_IjFSdGOB7RhVQBkc5aoBlPfDtqKgJl7R.jpg" alt="" srcset=""></div>
+            <div class="items"><img src="https://t4.ftcdn.net/jpg/01/80/82/81/360_F_180828113_IjFSdGOB7RhVQBkc5aoBlPfDtqKgJl7R.jpg" alt="" srcset=""></div>
+            <div class="items"><img src="https://t4.ftcdn.net/jpg/01/80/82/81/360_F_180828113_IjFSdGOB7RhVQBkc5aoBlPfDtqKgJl7R.jpg" alt="" srcset=""></div>
+        </div>
+    </section>
+</body>
+
+</html>

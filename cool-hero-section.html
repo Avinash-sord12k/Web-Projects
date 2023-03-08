@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Hero Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url("https://codewithsadee.github.io/tourly/assets/images/hero-banner.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 40%;
+            z-index: 0;
+        }
+
+        .header .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.723);
+            z-index: 1;
+        }
+
+        .header nav {
+            position: relative;
+            z-index: 2;
+        }
+
+        nav .heading1,
+        nav .heading2 {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .padded {
+            position: relative;
+            width: 90%;
+            padding: 10px 10px;
+            display: inline-flex;
+            align-items: center;
+            z-index: 2;
+            font-family: poppins;
+        }
+
+        .padded .inq {
+            color: white;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .inq #text {
+            margin-left: 20px;
+            font-weight: 300;
+        }
+
+        .padded i.phone-icon {
+            background: hsl(205deg 89% 41%);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .padded > * {
+            flex: 1;
+            align-self: center;
+            /* border: 2px solid black; */
+            box-sizing: border-box;
+        }
+
+        .logo i {
+            color: hsl(0, 0%, 100%);
+            margin-right: 1rem;
+        }
+
+        .logo {
+            font-size: 2.8em;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .padded .search {
+            font-size: 1.5em;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .social-media-links {
+            flex-grow: 1;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+        }
+        .social-media-links i {
+            font-size: 1rem;
+            width: 30px ;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.307);
+            border-radius: 50%;
+        }
+
+        .navigation {
+            flex-grow: 3;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navigation span a {
+            color: white;
+            text-decoration: none;
+            text-transform: capitalize;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        .book-now {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .book-now button {
+            border: none;
+            font-size: 1rem;
+            background: hsl(205deg 89% 41%);
+            padding: 0.5rem 0.8rem;
+            color: white;
+            font-weight: 300;
+            text-transform: capitalize;
+            border-radius: 30px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.196);
+        }
+
+        .hero-section {
+            width: 50vw;
+            position: relative;
+            margin: 20vh auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+        .hero-text {
+            color: white;
+            text-align: center;
+        }
+        .hero-text h1 {
+            font-size: 5rem;
+            text-transform: capitalize;
+            line-height: 5.8rem;
+        }
+        .hero-text p {
+            margin-top: 2rem;
+        }
+
+        .hero-buttons {
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+        .hero-buttons > * {
+            background-color: hsl(205deg 89% 41%);
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem 1.3rem;
+            border: none;
+            border-radius: 5rem;
+            text-transform: capitalize;
+        }
+
+        .inactive-btn {
+            background-color: hsla(205, 89%, 41%, 0);
+            border: 2px solid white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="overlay"></div>
+        <nav>
+            <div class="heading1">
+                <div class="padded">
+                    <span class="inq">
+                        <span id="icon">
+                            <i class="fa fa-phone phone-icon" aria-hidden="true"></i>
+                        </span>
+                        <span id="text">
+                            <div class="instruction">for further inquiries</div>
+                            <div class="number">+01(123)-456-789</div>
+                        </span>
+                    </span>
+                    <div class="logo"><i class="fa fa-plane" aria-hidden="true"></i>LOGO</div>
+                    <div class="search"><i class="fa fa-search" aria-hidden="true"></i></div>
+                </div>
+            </div>
+            <hr>
+            <div class="heading2">
+                <div class="padded">
+                    <div class="social-media-links">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    </div>
+                    <div class="navigation">
+                        <span><a href="#">home</a></span>
+                        <span><a href="#">about us</a></span>
+                        <span><a href="#">destination</a></span>
+                        <span><a href="#">packages</a></span>
+                        <span><a href="#">gallery</a></span>
+                        <span><a href="#">contact us</a></span>
+                    </div>
+                    <div class="book-now">
+                        <button>book now</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1>journey to explore world</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita perferendis quo reiciendis magni
+                    quaerat quidem autem assumenda aspernatur quae facilis.</p>
+            </div>
+            <div class="hero-buttons">
+                <button>learn more</button>
+                <button class="inactive-btn">book now</button>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

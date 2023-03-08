@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: rgb(58, 58, 58);
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            min-width: 160px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        #movies-container {
+            position: relative;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2em;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .movie-box {
+            position: relative;
+            top: 0;
+            left: 0;
+            height: fit-content;
+            width: 250px;
+            background-color: rgb(60, 60, 60);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px black;
+        }
+
+        .movie-box:hover {
+            box-shadow: 0 0 15px black;
+        }
+
+        .cover-image-wrap {
+            position: relative;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cover-image-wrap img {
+            aspect-ratio: 250 / 375;
+        }
+
+        .small-details {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            color: white;
+            background-color: rgba(1, 34, 1, 0);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .small-details .duration {
+            margin: 0 0 0 8px;
+        }
+
+        .small-details .pegi {
+            margin: 0 8px 0 0;
+        }
+
+        .details {
+            display: flex;
+            align-items: left;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin: 8px 8px;
+        }
+
+        .details .name {
+            margin: 10px 0 10px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ddd;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+
+
+        .genre-box {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            flex-direction: row;
+            margin-bottom: 25px;
+        }
+
+        .genre-box * {
+            color: white;
+        }
+
+        .plot {
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            height: 100px;
+            overflow-y: auto;
+        }
+
+        .plot::-webkit-scrollbar {
+            display: none;
+        }
+
+        .Action {
+            background-color: red;
+            border-radius: 8px;
+            padding: 1px 5px;
+        }
+
+        .Adventure {
+            background-color: rgb(70, 221, 0);
+            border-radius: 8px;
+            padding: 1px 5px;
+        }
+
+        .Horror {
+            background-color: rgb(0, 0, 0);
+            border-radius: 8px;
+            padding: 1px 5px;
+        }
+
+        .Drama {
+            background-color: rgb(255, 174, 0);
+            border-radius: 8px;
+            padding: 1px 5px;
+        }
+
+        .Sci-Fi {
+            background-color: #0d74eb;
+            border-radius: 8px;
+            padding: 1px 5px;
+        }
+
+        .Thriller {
+            background-color: #5f3207;
+            border-radius: 8px;
+            padding: 1px 5px;
+        }
+
+        .movie-options {
+            position: relative;
+            padding: 10px 0;
+            width: 100%;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .movie-options * {
+            font-size: 1.4em;
+        }
+
+        .watch-btn,
+        .download-btn,
+        .share-btn {
+            color: #0d74eb;
+        }
+
+        .fa-star-o {
+            color: yellow;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.29);
+            padding: 10px 5px 10px 5px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* margin-top: 20px; */
+        }
+
+        .search-box input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4285f4;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background-color: #3367d6;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="dropdown">
+            <button class="dropbtn">Movie Genres</button>
+            <div class="dropdown-content">
+                <a href="#" class="genre-btn">Action</a>
+                <a href="#" class="genre-btn">Adventure</a>
+                <a href="#" class="genre-btn">Animation</a>
+                <a href="#" class="genre-btn">Comedy</a>
+                <a href="#" class="genre-btn">Crime</a>
+                <a href="#" class="genre-btn">Documentary</a>
+                <a href="#" class="genre-btn">Drama</a>
+                <a href="#" class="genre-btn">Family</a>
+                <a href="#" class="genre-btn">Fantasy</a>
+                <a href="#" class="genre-btn">Horror</a>
+                <a href="#" class="genre-btn">Musical</a>
+                <a href="#" class="genre-btn">Mystery</a>
+                <a href="#" class="genre-btn">Romance</a>
+                <a href="#" class="genre-btn">Sci-Fi</a>
+                <a href="#" class="genre-btn">Thriller</a>
+                <a href="#" class="genre-btn">Western</a>
+            </div>
+        </div>
+
+        <div class="search">
+            <div class="search-box">
+                <input type="text" placeholder="Search for a movie">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+
+    </nav>
+
+    <section id="movies-container">
+
+    </section>
+
+</body>
+<script>
+
+    var apiKey = '4851bda6';
+    var index = 0;
+
+
+    // fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${movieName}`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         // Do something with the data
+    //         console.log(data);
+    //         loader.style.display = 'none';
+    //         createMoviebox(data, index);
+    //         index++;
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //         loader.style.display = 'block';
+    //         loader.style.borderColor = 'red';
+    //     });
+
+
+
+
+    function createMoviebox(data, index, genreName = '') {
+        let movieBox = cele('div');
+        let coverImageWrap = cele('div');
+        let coverImage = cele('img');
+        let smallDetails = cele('div');
+        let duration = cele('div');
+        let pegi = cele('div');
+        let details = cele('div');
+        let name = cele('h3');
+        let rating = cele('span');
+        let genre = cele('div');
+        let option = cele('div');
+
+        movieBox.id = index;
+        movieBox.classList.add('movie-box');
+        coverImageWrap.classList.add('cover-image-wrap');
+        coverImage.classList.add('cover-image');
+        smallDetails.classList.add('small-details');
+        duration.classList.add('duration');
+        pegi.classList.add('pegi');
+        details.classList.add('details');
+        name.classList.add('name');
+        genre.classList.add('genre-box');
+        option.classList.add('movie-options');
+
+        coverImage.src = data['Poster'];
+
+        coverImage.addEventListener('error', (event) => {
+            // errorList.push(index);
+            // movieBox.style.display = 'none';
+            console.log('error in image loading:', event.target.src);
+            console.log(movieBox);
+            movieBox.style.display = 'none';
+        });
+        coverImage.addEventListener('load', ()=> {
+            console.log('loaded image');
+            console.log(coverImage.height, coverImage.width);
+            if (coverImage.height < 375) {
+                coverImage.height = 375;
+            }
+        });
+
+
+        name.innerHTML = data['Title'];
+        pegi.innerHTML = '13+';
+        // duration.innerHTML = data['Runtime'].split(' ')[0];
+        duration.innerHTML = '2:00:00';
+        // totalGenre = data['Genre'];
+        // totalGenre = data['Genre'].split(', ');
+        genre_html = `<div class="${genreName}">${genreName}</div>`;
+
+
+        option_html = '';
+
+        // option_html += "<div class=\"movie-options\">";
+        option_html += "<div class=\"watch-btn\"><i class=\"fa fa-play\" aria-hidden=\"true\"></i></div>";
+        // option_html += "<div class=\"download-btn\"><i class=\"fa fa-download\" aria-hidden=\"true\"></i></div>";
+        option_html += "<div class=\"share-btn\"><i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i></div>";
+
+
+        coverImageWrap.appendChild(coverImage);
+        smallDetails.appendChild(duration);
+        smallDetails.appendChild(pegi);
+        coverImageWrap.appendChild(smallDetails);
+        // name.appendChild(rating);
+        // genre.innerHTML = genre_html;
+        details.appendChild(name);
+        // details.appendChild(genre);
+        // details.appendChild()
+        option.innerHTML = option_html;
+
+        movieBox.appendChild(coverImageWrap);
+        movieBox.appendChild(details);
+        movieBox.appendChild(option);
+
+        document.getElementById('movies-container').appendChild(movieBox);
+
+
+    }
+
+
+
+    function cele(ele) {
+        return document.createElement(ele);
+    }
+
+
+
+    // Get all genre buttons
+    var genreBtns = document.querySelectorAll(".genre-btn");
+
+    // Add an event listener to each genre button
+    genreBtns.forEach(function (genreBtn) {
+        genreBtn.addEventListener("click", function (event) {
+            document.getElementById('movies-container').innerHTML = '';
+            // Prevent the default link behavior
+            event.preventDefault();
+            // Get the genre name from the button text
+            var genreName = event.target.innerText;
+            // Log the genre name to the console
+            console.log(genreName);
+
+            fetch(`http://www.omdbapi.com/?apikey=4851bda6&s=${genreName}`).then(response => response.json())
+                .then(data => {
+                    // Do something with the data
+                    data.Search.forEach(element => createMoviebox(element, index, genreName));
+                    console.log(data.Search.forEach(element => console.log(element)))
+                    index++;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+        });
+    });
+
+    // Get the search button and input box
+    var searchBtn = document.querySelector(".search-btn");
+    var searchInput = document.querySelector(".search-box input");
+
+    // Add an event listener to the search button
+    searchBtn.addEventListener("click", function () {
+        // Get the search term from the input box
+        var searchTerm = searchInput.value;
+        // Perform a search based on the search term
+        performSearch(searchTerm);
+    });
+
+    // Perform a search function
+    function performSearch(searchTerm) {
+        // Do something with the search term, for example:
+        document.getElementById('movies-container').innerHTML = '';
+        fetch(`http://www.omdbapi.com/?apikey=4851bda6&s=${searchTerm}`).then(response => response.json())
+            .then(data => {
+                // Do something with the data
+                data.Search.forEach(element => createMoviebox(element, index));
+                console.log(data.Search.forEach(element => console.log(element)))
+                index++;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cool video card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            background-color: rgb(0, 0, 0);
+            background-size: 100% 100%;
+            background-position: center;
+        }
+
+        .container {
+            position: relative;
+            padding: 20px;
+            box-sizing: content-box;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0);
+            height: 50vh;
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 500px;
+            background-color: rgb(170, 255, 121);
+            --tr-p: 10px;
+            --tr-q: calc(100% - 10px);
+            --tr-r: 30%;
+            --tr-r2: calc(30% + 10px);
+            --tr-s: calc(70% - 10px);
+            --tr-s2: 70%;
+            clip-path: polygon(var(--tr-r) 0, var(--tr-r2) var(--tr-p), var(--tr-s) var(--tr-p), var(--tr-s2) 0,
+                    var(--tr-q) 0, 100% var(--tr-p), 100% var(--tr-q), var(--tr-q) 100%,
+                    var(--tr-s2) 100%, var(--tr-s) var(--tr-q), var(--tr-r2) var(--tr-q), var(--tr-r) 100%,
+                    var(--tr-p) 100%, 0 var(--tr-q), 0 var(--tr-p), var(--tr-p) 0);
+            z-index: 2;
+        }
+
+        .background-video1 {
+            position: absolute;
+            height: calc(100% - 4px);
+            width: calc(100% - 4px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(0, 18, 2);
+            --tr-p: 10px;
+            --tr-q: calc(100% - 10px);
+            --tr-r: calc(30% - 3px);
+            --tr-r2: calc(30% + 7px);
+            --tr-s: calc(70% - 7px);
+            --tr-s2: calc(70% + 3px);
+            clip-path: polygon(var(--tr-r) 0, var(--tr-r2) var(--tr-p), var(--tr-s) var(--tr-p), var(--tr-s2) 0,
+                    var(--tr-q) 0, 100% var(--tr-p), 100% var(--tr-q), var(--tr-q) 100%,
+                    var(--tr-s2) 100%, var(--tr-s) var(--tr-q), var(--tr-r2) var(--tr-q), var(--tr-r) 100%,
+                    var(--tr-p) 100%, 0 var(--tr-q), 0 var(--tr-p), var(--tr-p) 0);
+        }
+
+        .repeating-background {
+            position: absolute;
+            height: calc(100% - 4px);
+            width: calc(100% - 4px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: repeating-linear-gradient(
+                    rgba(0, 0, 0, 0) 1px,
+                    rgba(0, 0, 0, 0) 5px,
+                    rgba(0, 128, 0, 0.4) 5px,
+                    rgba(0, 128, 0, 0.4) 7px);
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="background-video1"></div>
+            <div class="repeating-background"></div>
+        </div>
+        <div class="card">
+            <div class="background-video1"></div>
+            <div class="repeating-background"></div>
+        </div>
+        <div class="card">
+            <div class="background-video1"></div>
+            <div class="repeating-background"></div>
+        </div>
+    </div>
+</body>
+
+</html>
